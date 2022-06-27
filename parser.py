@@ -72,6 +72,6 @@ def load_data(data_folder: str):
     yield docs[doc_id]
     
 
-with open("./output.json", "w") as f:
-  for i in load_data("./data"):
-    f.write(str(i) + "\n")
+# with open("./output.json", "w") as f:
+#   for i in load_data("./data"):
+#     f.write(str(i) + "\n")
