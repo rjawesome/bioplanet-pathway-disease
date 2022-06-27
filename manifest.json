@@ -3,6 +3,10 @@
   "__metadata__": {
       "url": "https://tripod.nih.gov/bioplanet/#"
   },
+  "author" : {
+    "name" : "Rohan Juneja",
+    "url" : "https://github.com/rjawesome"
+  },
   "dumper" : {
       "data_url" : ["https://tripod.nih.gov/bioplanet/download/pathway-category.csv", "https://tripod.nih.gov/bioplanet/download/pathway-disease-mapping.tsv.zip"],
       "uncompress" : true,
