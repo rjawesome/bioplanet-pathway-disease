@@ -1,0 +1,15 @@
+{
+  "version": "0.2",
+  "__metadata__": {
+      "url": "https://tripod.nih.gov/bioplanet/#"
+  },
+  "dumper" : {
+      "data_url" : ["https://tripod.nih.gov/bioplanet/download/pathway-category.csv", "https://tripod.nih.gov/bioplanet/download/pathway-disease-mapping.tsv.zip"],
+      "uncompress" : true,
+      "release": "version:get_release"
+  },
+  "uploader" : {
+      "parser" : "parser:load_data",
+      "on_duplicates": "error"
+  }
+}
