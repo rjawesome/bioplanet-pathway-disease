@@ -21,6 +21,9 @@ def read_csv(file: str, delim: str):
   
   return info
 
+def get_fmt_id(pathway_id: str):
+  return int(pathway_id[10:])
+
 def load_data(data_folder: str):
   #read files
   pathway_disease_info = read_csv(os.path.join(data_folder, "pathway-disease-mapping.tsv"), "\t")
@@ -39,7 +42,12 @@ def load_data(data_folder: str):
 
   #create json for pathway/disease
   for row in pathway_disease_info:
-    doc_id = f"{row['PATHWAY_ID']}-{row['DISEASE_NAME']}"
+
+    #skip if no pheno type
+    if row['PHENO_TYPE'] == '':
+      continue
+
+    doc_id = f"{row['PATHWAY_ID']}-{row['PHENO_TYPE']}"
 
     #just append gene if we have already processed pathway-disease pair
     if doc_id in docs:
@@ -53,7 +61,7 @@ def load_data(data_folder: str):
         '_id': doc_id,
         'subject': {
           'DISEASE_NAME': row['DISEASE_NAME'],
-          'PHENO_TYPE': -1 if row['PHENO_TYPE'] == '' else int(row['PHENO_TYPE'])
+          'PHENO_TYPE': int(row['PHENO_TYPE'])
         },
         'object': {
           'PATHWAY_ID': row['PATHWAY_ID'],
@@ -70,8 +78,16 @@ def load_data(data_folder: str):
   
   for doc_id in docs:
     yield docs[doc_id]
-    
 
-# with open("./output.json", "w") as f:
-#   for i in load_data("./data"):
-#     f.write(str(i) + "\n")
+def test():
+  import json
+
+  obj = {'data': []}
+  for i in load_data("./data"):
+    obj['data'].append(i)
+  
+  with open("./output.json", "w") as f:
+    f.write(json.dumps(obj, indent = 2))
+
+if __name__ == '__main__':
+  test()
