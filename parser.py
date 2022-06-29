@@ -21,9 +21,6 @@ def read_csv(file: str, delim: str):
   
   return info
 
-def get_fmt_id(pathway_id: str):
-  return int(pathway_id[10:])
-
 def load_data(data_folder: str):
   #read files
   pathway_disease_info = read_csv(os.path.join(data_folder, "pathway-disease-mapping.tsv"), "\t")
