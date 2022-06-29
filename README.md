@@ -1,7 +1,7 @@
 Example document:
 ```json
 {
-  "_id": "bioplanet_283-Ovarian cancer, somatic, 167000 (3)", 
+  "_id": "bioplanet_283-167000", 
   "subject": {"DISEASE_NAME": "Ovarian cancer, somatic, 167000 (3)", "PHENO_TYPE": 167000}, 
   "object": {
     "PATHWAY_ID": "bioplanet_283", 
